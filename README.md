@@ -2,6 +2,11 @@
 
 All source files are placed directly in the project root to make GitHub upload easier. There are no `public/`, `assets/`, or `data/` source folders. The server creates its private database file and `uploads/` folder automatically when it starts.
 
+## Latest mobile UI update
+- Preserves the compact Magizh mobile home screen and the green/cream/orange theme.
+- Checkout is now a richer 3-step flow: Cart & offers, Delivery address, and Payment proof.
+- Shows estimated B5 Coins before placing the order and an order confirmation screen. B5 Coins are credited only after Admin verifies payment.
+
 ## Pages
 - Customer: `/`
 - Admin: `/admin`

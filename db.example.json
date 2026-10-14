@@ -6,7 +6,10 @@
     "paymentInstructions": "Pay to the configured account/UPI reference and upload the payment screenshot. Admin verifies manually.",
     "deliveryFee": 40,
     "freeDeliveryAbove": 499,
-    "coinValue": 1
+    "coinValue": 1,
+    "coinRewardPercent": 5,
+    "couponCode": "",
+    "couponPercent": 0
   },
   "categories": [
     "Podi",
