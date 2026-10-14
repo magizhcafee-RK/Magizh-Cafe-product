@@ -1,7 +1,7 @@
 const express=require("express"),session=require("express-session"),helmet=require("helmet"),multer=require("multer"),bcrypt=require("bcryptjs"),fs=require("fs"),path=require("path"),crypto=require("crypto");
 const app=express(),PORT=process.env.PORT||3000,ROOT=__dirname,DB_FILE=path.join(ROOT,".magizh-db.json"),UPLOAD_DIR=path.join(ROOT,"uploads");
 fs.mkdirSync(path.dirname(DB_FILE),{recursive:true});fs.mkdirSync(UPLOAD_DIR,{recursive:true});
-if(!fs.existsSync(DB_FILE)){const ex=path.join(ROOT,".magizh-db.example.json");fs.copyFileSync(ex,DB_FILE)}
+if(!fs.existsSync(DB_FILE)){const ex=path.join(ROOT,"db.example.json");if(!fs.existsSync(ex)){console.error("Missing db.example.json. Upload it to the repository root.");process.exit(1)}fs.copyFileSync(ex,DB_FILE)}
 function readDB(){return JSON.parse(fs.readFileSync(DB_FILE,"utf8"))}function writeDB(db){const t=DB_FILE+".tmp";fs.writeFileSync(t,JSON.stringify(db,null,2));fs.renameSync(t,DB_FILE)}function id(p){return p+"-"+crypto.randomBytes(4).toString("hex").toUpperCase()}function safeUser(u){return {id:u.id,name:u.name,mobile:u.mobile,email:u.email||"",b5id:u.b5id,coins:u.coins||0}}
 app.use(helmet({contentSecurityPolicy:false}));app.use(express.json({limit:"2mb"}));app.use(express.urlencoded({extended:true}));
 app.use(session({name:"magizh.sid",secret:process.env.SESSION_SECRET||"change-this-session-secret-before-production",resave:false,saveUninitialized:false,cookie:{httpOnly:true,sameSite:"lax",secure:process.env.NODE_ENV==="production",maxAge:28800000}}));
