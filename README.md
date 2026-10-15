@@ -31,7 +31,7 @@ All source files are placed directly in the project root to make GitHub upload e
 ## Render
 - Build command: `npm install`
 - Start command: `npm start`
-- Environment variables: `ADMIN_PASSWORD` (strong password), `SESSION_SECRET` (long random secret), `NODE_ENV=production`
+- Environment variables: `ADMIN_PASSWORD` (strong password), `SESSION_SECRET` (long random secret), `NODE_ENV=production`. For password reset email, also set `APP_URL` (your deployed Render URL), `SMTP_HOST`, `SMTP_PORT` (usually 587), `SMTP_USER`, `SMTP_PASS`, optional `SMTP_FROM`, and `SMTP_SECURE=false` unless your SMTP provider requires TLS on connect.
 
 After deploy, test `/api/health`, then `/`, `/admin`, and `/partner`. Admin must create partner login before partner can sign in.
 
@@ -47,3 +47,10 @@ This is a testing build. JSON storage and default in-memory sessions are not pro
 
 ## Important deployment note
 This remains a functional pilot/demo implementation. Before public production use, configure persistent storage/database and durable sessions on Render, add payment-failure coin refunds, review security and privacy, and test all checkout flows using a staging deployment.
+
+
+## Profile, password reset and partner offer catalogue
+- Customers can save profile details and up to 10 delivery addresses from the Profile page. The header's My Account button remains the login/account entry; the drawer item is labelled Profile.
+- Forgot Password sends a time-limited reset link by email only when SMTP environment variables are configured in Render. Reset links expire after 30 minutes.
+- Admin can create partner logins with shop category, offer image URL, offer description, minimum bill and optional maximum coin cap. Partner offers appear as image cards on the customer page.
+- Customers may request B5 Coin redemption at a partner. The partner portal displays pending requests and only deducts coins after partner approval; rejected requests do not deduct coins. Partner must verify the bill in person before approval.

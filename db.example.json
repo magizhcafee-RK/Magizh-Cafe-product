@@ -84,12 +84,14 @@
   "partners": [
     {
       "id": "NMK001",
-      "name": "Magizh Partner Caf\u00e9",
+      "name": "Magizh Partner Café",
       "district": "Namakkal",
       "username": "nmk001",
       "passwordHash": "",
       "coinOfferPercent": 30,
-      "active": true
+      "active": true,
+      "image": "",
+      "offerDescription": "Use B5 Coins on eligible bills at this shop."
     }
   ],
   "coinRequests": [],
