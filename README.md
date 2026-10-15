@@ -1,35 +1,38 @@
-# Magizh × B5 Shopping + Admin + Partner Portal
+# Magizh × B5 Shopping — Admin/User/Partner project
 
-Mobile-first Node/Express project for GitHub + Render. The customer page, admin panel and partner portal share the same server-side JSON data store in this demo.
+## Files
+Upload all files from this ZIP into the same project root (do not put them inside a nested folder).
 
-## Pages
-- `/` — mobile customer shopping page, category/product browsing, profile/address, cart, coupon, B5 coin use, screenshot-based payment proof, order history and status timeline.
-- `/admin` — admin dashboard with one sidebar section open at a time: dashboard, category management, products, orders/payments, B5 coins, partners, payment/delivery/coupon settings, and password security.
-- `/partner` — partner login/dashboard and customer coin redemption.
-- `/api/health` — health check.
+- `index.html` — customer shopping page
+- `admin.html` — admin control panel (`/admin`)
+- `partner.html` — partner portal (`/partner`)
+- `server.js` — Express backend and shared database APIs
+- `db.json` — initial data; server reads and writes this file
+- `db.example.json` — clean example data
+- `style.css`, `user.js`, `admin.js`, `partner.js` — UI styles and logic
+- `approved_mobile_design_reference.html` — exact customer mobile HTML reference supplied for design comparison; the reference itself is not altered
+- logo PNG files
+
+## Run locally
+Requires Node.js 20+.
+
+```bash
+npm install
+npm start
+```
+Open `/` for the customer page and `/admin` for admin.
 
 ## Admin access
-- Preview default password: `MagizhAdmin@2026` if `ADMIN_PASSWORD` is not set and no admin password has been changed in the database.
-- Recommended: set `ADMIN_PASSWORD` and `SESSION_SECRET` in Render environment variables. After login, use **Security → Change Admin Password** to set a database-backed password. If you change the password in the dashboard, keep the database/persistent disk; a fresh deployment without persistent data may reset it.
-- Create each partner username/password under **Partners**. There is no shared default partner password.
+The initial preview password is `MagizhAdmin@2026`. Log in and change it under **Security** before using real customer data. For deployment, set `ADMIN_PASSWORD` and a strong `SESSION_SECRET` environment variable.
 
-## Deploy to Render
-- Build command: `npm install`
-- Start command: `npm start`
-- Environment variables: `NODE_ENV=production`, `SESSION_SECRET=<long-random-secret>`, and preferably `ADMIN_PASSWORD=<strong-password>`.
-- Persistent storage: mount a Render persistent disk at the project path used for `db.json` and `uploads`, or replace JSON storage with PostgreSQL before production. Render ephemeral files can reset on redeploy/restart without persistent storage.
+## Implemented workflows
+- Shared server-side data for active products/categories, customer accounts, orders and coin balances.
+- Admin category create/rename/delete (a category containing products cannot be deleted until those products are moved).
+- Product create/edit, up to 3 image uploads, hide/activate and delete.
+- Customer registration/login, profile/address saving, cart, coupon/coin savings, payment screenshot upload and order history.
+- Admin payment proof review, payment verification and step-by-step order status updates.
+- Manual B5 coin credit and approval of customer coin requests; new credit triggers a one-time wallet celebration on the next authenticated visit.
+- Partner login creation and partner coin-redemption portal.
 
-## Included workflow
-- Admin category add / rename / delete (deletion is blocked while active products still use that category).
-- Product create / edit / hide / activate / delete, up to 3 uploaded JPG/PNG/WebP photos, weight, price, description and category dropdown.
-- Customer products and admin use the same `/api/public-data` + `/api/admin/data` database.
-- Order proof screenshot appears in Admin. Admin verifies payment before moving an order to Payment verified, Packed, Dispatched/Couriered, Delivered. Customer sees the order timeline.
-- Admin manually credits B5 coins; customers see a one-time celebration when they next open the site. Coin request approvals also create notifications.
-- Coupon code/percentage can be changed in Admin Settings. Default preview coupon is `MAGIZH10` at 10%.
-- 1 B5 Coin = ₹1 for checkout; available coins and valid coupon savings reduce the order total.
-
-## Important production notes
-This is a testable starter, not a production-hardened commerce system. It uses a JSON file database and the default Express memory session store. Before accepting real payments or customer information, use persistent storage/database, a production session store, CSRF/rate limiting, proper password recovery/email delivery, payment gateway verification, backups, and privacy/security review. Payment screenshot approval is manual; this project does not process payments itself.
-
-
-FLAT UPLOAD PACKAGE: All project source files are placed at the repository root (no public/, data/, assets/, or uploads/ folders). User uploads are saved as uploaded_* files in the root and served only through /uploads/:file.
+## Deployment note
+This project currently uses `db.json` and uploaded files on local disk. Use a persistent disk or migrate the database/uploads to durable managed storage before production; ephemeral deployment filesystems can reset on redeploy. Verify the deployment environment and real payment receipts before processing customer orders.
