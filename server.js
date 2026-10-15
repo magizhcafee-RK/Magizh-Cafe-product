@@ -1,13 +1,19 @@
 const express=require("express"),session=require("express-session"),helmet=require("helmet"),multer=require("multer"),bcrypt=require("bcryptjs"),fs=require("fs"),path=require("path"),crypto=require("crypto");
-const app=express(),PORT=process.env.PORT||3000,ROOT=__dirname,DB_FILE=path.join(ROOT,"data","db.json"),UPLOAD_DIR=path.join(ROOT,"uploads");
-fs.mkdirSync(path.dirname(DB_FILE),{recursive:true});fs.mkdirSync(UPLOAD_DIR,{recursive:true});
-if(!fs.existsSync(DB_FILE)){const ex=path.join(ROOT,"data","db.example.json");fs.copyFileSync(ex,DB_FILE)}
+const app=express(),PORT=process.env.PORT||3000,ROOT=__dirname,DB_FILE=path.join(ROOT,"db.json"),UPLOAD_DIR=ROOT;
+fs.mkdirSync(UPLOAD_DIR,{recursive:true});
+if(!fs.existsSync(DB_FILE)){const ex=path.join(ROOT,"db.example.json");fs.copyFileSync(ex,DB_FILE)}
 function readDB(){return JSON.parse(fs.readFileSync(DB_FILE,"utf8"))}function writeDB(db){const t=DB_FILE+".tmp";fs.writeFileSync(t,JSON.stringify(db,null,2));fs.renameSync(t,DB_FILE)}function id(p){return p+"-"+crypto.randomBytes(4).toString("hex").toUpperCase()}function safeUser(u){return {id:u.id,name:u.name,mobile:u.mobile,email:u.email||"",address:u.address||"",b5id:u.b5id,coins:u.coins||0}}
 app.use(helmet({contentSecurityPolicy:false}));app.use(express.json({limit:"2mb"}));app.use(express.urlencoded({extended:true}));
 app.use(session({name:"magizh.sid",secret:process.env.SESSION_SECRET||"change-this-session-secret-before-production",resave:false,saveUninitialized:false,cookie:{httpOnly:true,sameSite:"lax",secure:process.env.NODE_ENV==="production",maxAge:28800000}}));
-const storage=multer.diskStorage({destination:(q,f,cb)=>cb(null,UPLOAD_DIR),filename:(q,f,cb)=>cb(null,Date.now()+"-"+crypto.randomBytes(4).toString("hex")+path.extname(f.originalname).toLowerCase())});
+const storage=multer.diskStorage({destination:(q,f,cb)=>cb(null,UPLOAD_DIR),filename:(q,f,cb)=>cb(null,"uploaded_"+Date.now()+"-"+crypto.randomBytes(4).toString("hex")+path.extname(f.originalname).toLowerCase())});
 const upload=multer({storage,limits:{fileSize:5*1024*1024},fileFilter:(q,f,cb)=>/^image\/(jpeg|png|webp)$/.test(f.mimetype)?cb(null,true):cb(new Error("Only JPG, PNG or WebP images are accepted"))});
-app.use("/uploads",express.static(UPLOAD_DIR));app.use(express.static(path.join(ROOT,"public")));
+app.get("/uploads/:file",(q,s)=>{const name=String(q.params.file||"");if(!/^uploaded_[a-zA-Z0-9._-]+$/.test(name))return s.sendStatus(404);s.sendFile(path.join(UPLOAD_DIR,name));});
+app.get("/style.css",(q,s)=>s.sendFile(path.join(ROOT,"style.css")));
+app.get("/user.js",(q,s)=>s.sendFile(path.join(ROOT,"user.js")));
+app.get("/admin.js",(q,s)=>s.sendFile(path.join(ROOT,"admin.js")));
+app.get("/partner.js",(q,s)=>s.sendFile(path.join(ROOT,"partner.js")));
+app.get("/assets/magizh-logo.png",(q,s)=>s.sendFile(path.join(ROOT,"magizh-logo.png")));
+app.get("/assets/b5-logo.png",(q,s)=>s.sendFile(path.join(ROOT,"b5-logo.png")));
 const guard=(role)=>(req,res,next)=>req.session.role===role?next():res.status(401).json({error:role+" login required"});
 const admin=guard("admin"),user=guard("user"),partner=guard("partner");
 app.get("/api/health",(q,s)=>s.json({ok:true,service:"magizh-b5",time:new Date().toISOString()}));
@@ -42,5 +48,5 @@ app.post("/api/partner/logout",partner,(q,s)=>q.session.destroy(()=>s.json({ok:t
 app.get("/api/partner/dashboard",partner,(q,s)=>{const d=readDB(),p=d.partners.find(x=>x.id===q.session.partnerId);if(!p)return s.status(404).json({error:"Partner not found"});const tx=d.coinTransactions.filter(t=>t.partnerId===p.id&&t.type==="Redeemed"),now=Date.now(),week=tx.filter(t=>now-new Date(t.at).getTime()<7*86400000),month=tx.filter(t=>now-new Date(t.at).getTime()<30*86400000);s.json({partner:{id:p.id,name:p.name,district:p.district,coinOfferPercent:p.coinOfferPercent},totalCoins:tx.reduce((a,t)=>a+t.amount,0),weekCoins:week.reduce((a,t)=>a+t.amount,0),monthCoins:month.reduce((a,t)=>a+t.amount,0),transactions:tx.sort((a,b)=>b.at.localeCompare(a.at))})});
 app.post("/api/partner/redeem",partner,(q,s)=>{const d=readDB(),p=d.partners.find(x=>x.id===q.session.partnerId),b=q.body||{},bill=Number(b.billAmount),n=Number(b.coins);if(!p||!b.customerB5Id||!b.reference||!Number.isFinite(bill)||bill<=0||!Number.isInteger(n)||n<=0||n>Math.floor(bill*p.coinOfferPercent/100))return s.status(400).json({error:"Check customer B5 ID, bill, coins, reference and offer limit"});const u=d.users.find(x=>x.b5id===b.customerB5Id);if(!u)return s.status(404).json({error:"Customer B5 ID not found"});if((u.coins||0)<n)return s.status(409).json({error:"Customer does not have enough coins"});u.coins-=n;const t={id:id("COIN"),userId:u.id,b5id:u.b5id,type:"Redeemed",amount:n,reason:p.name+" · bill ₹"+bill+" · "+b.reference,partnerId:p.id,partnerName:p.name,billAmount:bill,reference:String(b.reference),at:new Date().toISOString()};d.coinTransactions.push(t);writeDB(d);s.json({ok:true,transaction:t,user:safeUser(u)})});
 app.use((e,q,s,n)=>{console.error(e);s.status(400).json({error:e.message||"Request failed"})});
-app.get("/admin",(q,s)=>s.sendFile(path.join(ROOT,"public","admin.html")));app.get("/partner",(q,s)=>s.sendFile(path.join(ROOT,"public","partner.html")));app.get("*",(q,s)=>s.sendFile(path.join(ROOT,"public","index.html")));
+app.get("/admin",(q,s)=>s.sendFile(path.join(ROOT,"admin.html")));app.get("/partner",(q,s)=>s.sendFile(path.join(ROOT,"partner.html")));app.get("*",(q,s)=>s.sendFile(path.join(ROOT,"index.html")));
 app.listen(PORT,()=>console.log("Magizh B5 server listening on "+PORT));

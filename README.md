@@ -17,7 +17,7 @@ Mobile-first Node/Express project for GitHub + Render. The customer page, admin 
 - Build command: `npm install`
 - Start command: `npm start`
 - Environment variables: `NODE_ENV=production`, `SESSION_SECRET=<long-random-secret>`, and preferably `ADMIN_PASSWORD=<strong-password>`.
-- Persistent storage: mount a Render persistent disk at the project path used for `data/db.json` and `uploads`, or replace JSON storage with PostgreSQL before production. Render ephemeral files can reset on redeploy/restart without persistent storage.
+- Persistent storage: mount a Render persistent disk at the project path used for `db.json` and `uploads`, or replace JSON storage with PostgreSQL before production. Render ephemeral files can reset on redeploy/restart without persistent storage.
 
 ## Included workflow
 - Admin category add / rename / delete (deletion is blocked while active products still use that category).
@@ -30,3 +30,6 @@ Mobile-first Node/Express project for GitHub + Render. The customer page, admin 
 
 ## Important production notes
 This is a testable starter, not a production-hardened commerce system. It uses a JSON file database and the default Express memory session store. Before accepting real payments or customer information, use persistent storage/database, a production session store, CSRF/rate limiting, proper password recovery/email delivery, payment gateway verification, backups, and privacy/security review. Payment screenshot approval is manual; this project does not process payments itself.
+
+
+FLAT UPLOAD PACKAGE: All project source files are placed at the repository root (no public/, data/, assets/, or uploads/ folders). User uploads are saved as uploaded_* files in the root and served only through /uploads/:file.
