@@ -61,3 +61,9 @@ This remains a functional pilot/demo implementation. Before public production us
 - Admin can configure the global order-reward coin percentage in Payment & Delivery Settings, in addition to the per-product coin redemption percentage.
 - Partner records and offer images feed the customer-facing Partner Offers catalogue. The partner login remains separate at `/partner`; admin creates credentials and can pause or reactivate partner visibility.
 - Profile opens as a dedicated detail screen rather than showing the home content behind it.
+
+
+## Temporary test login credentials (change before public launch)
+- Admin page: username is not required; password: `MagizhAdmin@2026`. If `ADMIN_PASSWORD` is set in Render Environment, that configured value takes priority. To change it, update `ADMIN_PASSWORD` in Render and redeploy/restart.
+- Seeded partner portal: username `nmk001`, password `B5Partner@2026`. On first successful login, the seeded blank password hash is replaced with a secure hash in the JSON database. Admin can later change the partner password from the Admin Partner section.
+- These are temporary demo credentials. Change them before sharing the live website publicly.
