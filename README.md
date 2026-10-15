@@ -37,3 +37,13 @@ After deploy, test `/api/health`, then `/`, `/admin`, and `/partner`. Admin must
 
 ## Important testing notes
 This is a testing build. JSON storage and default in-memory sessions are not production-ready. Render filesystem may reset without persistent storage. Payment is manual; verify payment in your bank/UPI account before marking it verified.
+
+## User-page refinement update (October 2026)
+- Mobile product cards support pack-size selection (50 g, 100 g, 250 g, 500 g, 1 kg) with proportional pricing when custom variants are not configured. Product photos open a full-screen gallery; upload up to three images per product from Admin.
+- Partner Offers, Coupons & Offers, and My Orders open in focused page-style views. The top-left menu slides in as a side drawer.
+- Checkout includes View All Coupons, coupon savings, B5 Coin redemption, itemized totals, and a savings amount/percentage counter.
+- Admin can create/pause coupons and set the maximum B5 Coin redemption percentage for each product (0–100%). The checkout and server both enforce the per-product limit and customer wallet balance. One B5 Coin equals ₹1.
+- Coin redemption is deducted from the customer's wallet when the order is submitted. If a payment is later rejected/cancelled, a refund process must be added before production use.
+
+## Important deployment note
+This remains a functional pilot/demo implementation. Before public production use, configure persistent storage/database and durable sessions on Render, add payment-failure coin refunds, review security and privacy, and test all checkout flows using a staging deployment.
