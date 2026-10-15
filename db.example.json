@@ -7,9 +7,8 @@
     "deliveryFee": 40,
     "freeDeliveryAbove": 499,
     "coinValue": 1,
-    "coinRewardPercent": 5,
-    "couponCode": "",
-    "couponPercent": 0
+    "couponCode": "MAGIZH10",
+    "couponPercent": 10
   },
   "categories": [
     "Podi",
@@ -84,14 +83,12 @@
   "partners": [
     {
       "id": "NMK001",
-      "name": "Magizh Partner Café",
+      "name": "Magizh Partner Caf\u00e9",
       "district": "Namakkal",
       "username": "nmk001",
       "passwordHash": "",
       "coinOfferPercent": 30,
-      "active": true,
-      "image": "",
-      "offerDescription": "Use B5 Coins on eligible bills at this shop."
+      "active": true
     }
   ],
   "coinRequests": [],

@@ -1,0 +1,97 @@
+{
+  "settings": {
+    "siteName": "Magizh Shopping",
+    "paymentName": "Magizh",
+    "paymentReference": "",
+    "paymentInstructions": "Pay to the configured account/UPI reference and upload the payment screenshot. Admin verifies manually.",
+    "deliveryFee": 40,
+    "freeDeliveryAbove": 499,
+    "coinValue": 1,
+    "couponCode": "MAGIZH10",
+    "couponPercent": 10
+  },
+  "categories": [
+    "Podi",
+    "Thokku",
+    "Oorugai",
+    "Snacks",
+    "Soaps"
+  ],
+  "products": [
+    {
+      "id": "P001",
+      "name": "Poondu Podi",
+      "category": "Podi",
+      "price": 120,
+      "weight": "250 g",
+      "description": "Traditional podi. Replace sample image with actual product photos.",
+      "images": [],
+      "active": true
+    },
+    {
+      "id": "P002",
+      "name": "Paruppu Podi",
+      "category": "Podi",
+      "price": 100,
+      "weight": "250 g",
+      "description": "Traditional podi. Replace sample image with actual product photos.",
+      "images": [],
+      "active": true
+    },
+    {
+      "id": "P003",
+      "name": "Karuveppilai Thokku",
+      "category": "Thokku",
+      "price": 150,
+      "weight": "250 g",
+      "description": "Traditional thokku. Replace sample image with actual product photos.",
+      "images": [],
+      "active": true
+    },
+    {
+      "id": "P004",
+      "name": "Elumichai Oorugai",
+      "category": "Oorugai",
+      "price": 130,
+      "weight": "250 g",
+      "description": "Traditional pickle. Replace sample image with actual product photos.",
+      "images": [],
+      "active": true
+    },
+    {
+      "id": "P005",
+      "name": "Ellu Podi",
+      "category": "Podi",
+      "price": 110,
+      "weight": "250 g",
+      "description": "Traditional podi. Replace sample image with actual product photos.",
+      "images": [],
+      "active": true
+    },
+    {
+      "id": "P006",
+      "name": "Millet Laddu",
+      "category": "Snacks",
+      "price": 90,
+      "weight": "250 g",
+      "description": "Traditional snack. Replace sample image with actual product photos.",
+      "images": [],
+      "active": true
+    }
+  ],
+  "users": [],
+  "partners": [
+    {
+      "id": "NMK001",
+      "name": "Magizh Partner Caf\u00e9",
+      "district": "Namakkal",
+      "username": "nmk001",
+      "passwordHash": "",
+      "coinOfferPercent": 30,
+      "active": true
+    }
+  ],
+  "coinRequests": [],
+  "coinTransactions": [],
+  "orders": []
+}
