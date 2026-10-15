@@ -50,7 +50,14 @@ This remains a functional pilot/demo implementation. Before public production us
 
 
 ## Profile, password reset and partner offer catalogue
-- Customers can save profile details and up to 10 delivery addresses from the Profile page. The header's My Account button remains the login/account entry; the drawer item is labelled Profile.
+- Customers can save profile details and up to 10 delivery addresses from the Profile page. The header button and drawer entry open a dedicated Profile screen (login is requested if the customer is signed out). Profile stores personal details and up to 10 delivery addresses.
 - Forgot Password sends a time-limited reset link by email only when SMTP environment variables are configured in Render. Reset links expire after 30 minutes.
 - Admin can create partner logins with shop category, offer image URL, offer description, minimum bill and optional maximum coin cap. Partner offers appear as image cards on the customer page.
 - Customers may request B5 Coin redemption at a partner. The partner portal displays pending requests and only deducts coins after partner approval; rejected requests do not deduct coins. Partner must verify the bill in person before approval.
+
+
+## Admin improvements in v6
+- Admin can edit partner shop details, username, offer percentage, minimum bill, maximum coin cap, catalogue image URL, address, description and active/paused status. Leave the password field blank when editing to keep the existing password; enter a new password to reset it.
+- Admin can configure the global order-reward coin percentage in Payment & Delivery Settings, in addition to the per-product coin redemption percentage.
+- Partner records and offer images feed the customer-facing Partner Offers catalogue. The partner login remains separate at `/partner`; admin creates credentials and can pause or reactivate partner visibility.
+- Profile opens as a dedicated detail screen rather than showing the home content behind it.
