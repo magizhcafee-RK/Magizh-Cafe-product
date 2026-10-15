@@ -181,14 +181,6 @@ button{cursor:pointer}
   </nav>
 </div>
 <div class="toast" id="toast"></div>
-<script>
-let cartCount=0, toastTimer;
-function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),1800)}
-function addToCart(button){cartCount++;document.getElementById('cartCount').textContent=cartCount;button.textContent='✓ Added';button.classList.add('added');toast('Added to cart')}
-function filterProducts(){const q=document.getElementById('search').value.toLowerCase();document.querySelectorAll('.product').forEach(p=>p.style.display=p.dataset.name.toLowerCase().includes(q)?'':'none')}
-function selectCategory(category){document.querySelectorAll('.product').forEach(p=>p.style.display=category==='All'||p.dataset.category===category?'':'none');document.getElementById('products').scrollIntoView({behavior:'smooth'});toast(category==='All'?'Showing all products':'Category: '+category)}
-function resetFilter(){document.getElementById('search').value='';document.querySelectorAll('.product').forEach(p=>p.style.display='');toast('Showing all sample products')}
-function setNav(button,label){document.querySelectorAll('.navitem').forEach(n=>n.classList.remove('active'));button.classList.add('active');if(label==='Shop')document.getElementById('products').scrollIntoView({behavior:'smooth'});else if(label==='Partners')document.getElementById('partners').scrollIntoView({behavior:'smooth'});else if(label!=='Home')toast(label+' page preview')}
-</script>
+<script src="/user.js" defer></script>
 </body>
 </html>
