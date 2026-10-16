@@ -135,7 +135,7 @@ button{cursor:pointer}
     </div>
   </section>
 
-  <section class="offer-banner" onclick="document.getElementById('partners').scrollIntoView({behavior:'smooth'})" role="button" tabindex="0">
+  <section class="offer-banner" onclick="showPartnerOffers()" role="button" tabindex="0">
     <div class="coin">B5</div>
     <div class="offer-copy"><strong>Partner offers &amp; rewards</strong><span>Use B5 Coins at selected local shops.</span><b>EXPLORE OFFERS&nbsp; →</b></div>
   </section>
@@ -162,14 +162,6 @@ button{cursor:pointer}
     </div>
   </section>
 
-  <section class="section" id="partners">
-    <div class="section-head"><div><h3>Partner shops &amp; offers</h3><p>Discover trusted shops near you</p></div><button class="textlink" onclick="toast('Partner directory preview')">View all&nbsp; →</button></div>
-    <div class="partner-card">
-      <img class="partner-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=240&q=80" alt="Partner shop" />
-      <div class="partner-info"><strong>Magizh Partner Café</strong><p>📍 Namakkal · Participating B5 partner</p><span class="partner-offer">30% BILL VALUE IN COINS</span></div>
-      <button class="textlink" onclick="toast('Partner offer details preview')">›</button>
-    </div>
-  </section>
   <p class="footer-note">Made with care by Magizh · Shop local. Share goodness.</p>
 
   <nav class="bottomnav" aria-label="Main navigation">
