@@ -24,7 +24,7 @@ button{cursor:pointer}
 .header{background:var(--paper);padding:15px 17px 13px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
 .brandrow{display:flex;align-items:center;gap:11px}
 .menu{width:35px;height:35px;border:0;background:transparent;color:var(--green);font-size:25px;padding:0}
-.logo-mark{width:43px;height:43px;border-radius:13px;background:#e8f1df;display:grid;place-items:center;overflow:hidden;flex-shrink:0}.logo-mark img{width:100%;height:100%;object-fit:contain;padding:3px}
+.logo-mark{width:43px;height:43px;border-radius:13px;background:#e8f1df;display:grid;place-items:center;overflow:hidden;flex-shrink:0}.logo-mark img{width:100%;height:100%;object-fit:contain;padding:2px;background:transparent}
 .brand{flex:1;min-width:0}
 .brand h1{font-family:Arial,Helvetica,sans-serif;font-size:25px;line-height:1;margin:0;letter-spacing:-.7px}
 .brand p{font-size:10px;color:var(--muted);margin:4px 0 0;letter-spacing:.2px}
@@ -33,7 +33,7 @@ button{cursor:pointer}
 .search{flex:1;display:flex;align-items:center;gap:8px;background:#f3f0e7;border:1px solid var(--line);border-radius:13px;padding:0 12px;height:42px;color:var(--muted)}
 .search input{border:0;outline:0;background:transparent;width:100%;min-width:0;font-size:12px;color:var(--green)}
 .cart{border:0;border-radius:13px;background:var(--orange);color:white;padding:0 13px;font-size:12px;font-weight:700}
-.hero{padding:17px 16px 0}.hero-banner-slider{display:none;margin-bottom:14px;position:relative;border-radius:20px;overflow:hidden;background:#e8eddf}.hero-banner-slider.ready{display:block}.hero-banner-slider a{display:block}.hero-banner-slider img{display:block;width:100%;aspect-ratio:2.2/1;object-fit:cover}.banner-dots{display:flex;justify-content:center;gap:6px;padding:7px}.banner-dots i{width:6px;height:6px;border-radius:50%;background:#b5c2b1}.banner-dots i.active{background:var(--orange)}
+.hero{padding:17px 16px 0}.hero-banner-slider{display:none;margin-bottom:14px;position:relative;border-radius:20px;overflow:hidden;background:#e8eddf}.hero-banner-slider.ready{display:block}.hero-banner-slider a{display:block}.hero-banner-slider img{display:block;width:100%;height:auto;aspect-ratio:2.2/1;object-fit:contain;background:var(--cream)}.banner-dots{display:flex;justify-content:center;gap:6px;padding:7px}.banner-dots i{width:6px;height:6px;border-radius:50%;background:#b5c2b1}.banner-dots i.active{background:var(--orange)}
 .hero-card{min-height:228px;border-radius:23px;overflow:hidden;position:relative;background:linear-gradient(115deg,#edf2df 0%,#f9ead3 58%,#f5d8ac 100%);padding:21px 18px;box-shadow:var(--shadow)}
 .eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--orange);margin:0 0 10px}
 .hero h2{font-family:Arial,Helvetica,sans-serif;font-weight:600;font-size:31px;line-height:1.08;letter-spacing:-.7px;max-width:245px;margin:0;color:#263f2d}
@@ -41,7 +41,7 @@ button{cursor:pointer}
 .primary{background:var(--orange);color:#fff;border:0;border-radius:30px;padding:12px 16px;font-size:12px;font-weight:700;box-shadow:0 5px 12px #c95b1b30}
 .hero-art{position:absolute;right:-9px;bottom:7px;width:145px;height:150px;display:flex;align-items:center;justify-content:center}
 .hero-art img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 10px 10px #35492b22)}
-.coin-tag{position:absolute;right:13px;top:14px;background:#fff9;border:1px solid #ffffffb8;border-radius:20px;padding:7px 9px;font-size:9px;font-weight:700;color:#8a4b16}
+.coin-tag{position:absolute;right:13px;top:14px;display:flex;align-items:center;gap:3px;background:#fff9;border:1px solid #ffffffb8;border-radius:20px;padding:7px 9px;font-size:9px;font-weight:700;color:#8a4b16}
 .section{padding:23px 17px 0}
 .section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:13px}
 .section h3{font-family:Arial,Helvetica,sans-serif;font-size:23px;font-weight:600;letter-spacing:-.35px;margin:0}
@@ -90,11 +90,11 @@ button{cursor:pointer}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#173f2e;color:#fff;padding:12px 18px;border-radius:10px;font-size:14px;line-height:1.4;opacity:0;pointer-events:none;transition:.2s;z-index:300;white-space:normal;width:max-content;max-width:calc(100vw - 28px);text-align:center;box-shadow:0 8px 24px #0004}.toast.show{opacity:1}
 .toast.show{opacity:1}
 @media(min-width:760px){body{padding:0;background:var(--cream)}.phone{max-width:none;width:100%;border-radius:0;min-height:100vh;box-shadow:none;padding-bottom:76px}.header{border-radius:0;padding-left:4vw;padding-right:4vw}.hero{padding-left:4vw;padding-right:4vw}.section{padding-left:4vw;padding-right:4vw}.category-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.products{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.product-img{height:220px}.product h4{font-size:15px}.price{font-size:18px}.add{font-size:13px;padding:12px}.offer-banner{margin-left:4vw;margin-right:4vw}.bottomnav{left:0;transform:none;max-width:none;bottom:0;border-radius:0; padding:10px 12vw}.topline{padding:12px;font-size:13px}}@media(min-width:1200px){.products{grid-template-columns:repeat(5,minmax(0,1fr))}.hero-card{min-height:280px;padding:32px}.hero h2{font-size:42px;max-width:440px}.hero .sub{font-size:15px;max-width:420px}.hero-art{width:240px;height:230px}.section h3{font-size:28px}}
-.intro-overlay{position:fixed;inset:0;z-index:1000;background:#123c2b;display:grid;place-items:center;color:white}.intro-overlay video{width:100%;height:100%;object-fit:cover}.intro-overlay .skip{position:absolute;right:18px;bottom:24px;border:1px solid #ffffff90;background:#174b35cc;color:white;border-radius:20px;padding:10px 18px;font-weight:700}
+.intro-overlay{position:fixed;inset:0;z-index:1000;background:#123c2b;display:grid;place-items:center;color:white}.intro-overlay video{width:100%;height:100%;object-fit:cover}.intro-overlay .intro-message{position:absolute;left:18px;right:18px;bottom:24px;text-align:center;color:#fff;font-size:13px;text-shadow:0 1px 4px #0008}
 </style>
 </head>
 <body>
-<div id="introOverlay" class="intro-overlay" hidden><video id="introVideo" playsinline muted autoplay preload="auto"><source src="/magizh-intro.mp4" type="video/mp4"></video><button class="skip" onclick="finishIntro()">Skip</button></div>
+<div id="introOverlay" class="intro-overlay" hidden><video id="introVideo" playsinline muted autoplay preload="auto"><source src="/magizh-intro.mp4" type="video/mp4"></video><div class="intro-message">Please wait — welcome to Magizh</div></div>
 <div class="phone">
 
   <header class="header">
@@ -120,7 +120,7 @@ button{cursor:pointer}
       <div class="hero-art">
         <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=400&q=80" alt="Traditional wholesome food" />
       </div>
-      <span class="coin-tag"><img src="/assets/b5-logo.png" alt="B5" style="width:18px;height:18px;object-fit:contain;vertical-align:middle;margin-right:4px"> B5 COIN REWARDS</span>
+      <span class="coin-tag"><img src="/assets/b5-logo.png" alt="B5" style="width:20px;height:20px;object-fit:cover;border-radius:50%;vertical-align:middle;margin-right:4px"> B5 COIN REWARDS</span>
     </div>
   </section>
 
@@ -139,7 +139,7 @@ button{cursor:pointer}
   </section>
 
   <section class="offer-banner" onclick="showPartnerOffers()" role="button" tabindex="0">
-    <div class="coin"><img src="/assets/b5-logo.png" alt="B5 Coin" style="width:100%;height:100%;object-fit:contain;padding:5px"></div>
+    <div class="coin"><img src="/assets/b5-logo.png" alt="B5 Coin" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
     <div class="offer-copy"><strong>Partner offers &amp; rewards</strong><span>Use B5 Coins at selected local shops.</span><b>EXPLORE OFFERS&nbsp; →</b></div>
   </section>
 
@@ -178,7 +178,7 @@ button{cursor:pointer}
 <div class="toast" id="toast"></div>
 <script>
 function finishIntro(){const o=document.getElementById('introOverlay');if(o){document.getElementById('introVideo')?.pause();o.remove();try{sessionStorage.setItem('magizhIntroSeen','1')}catch(e){}}}
-(function(){try{if(!sessionStorage.getItem('magizhIntroSeen')){const o=document.getElementById('introOverlay'),v=document.getElementById('introVideo');o.hidden=false;const done=()=>finishIntro();v.addEventListener('ended',done,{once:true});v.addEventListener('error',done,{once:true});const p=v.play();if(p&&p.catch)p.catch(()=>{v.muted=true;v.play().catch(done)});setTimeout(done,12000)}}catch(e){}})();
+(function(){try{if(!sessionStorage.getItem('magizhIntroSeen')){const o=document.getElementById('introOverlay'),v=document.getElementById('introVideo');o.hidden=false;const done=()=>finishIntro();v.addEventListener('ended',done,{once:true});v.addEventListener('error',()=>{document.querySelector('.intro-message').textContent='Video could not play. Opening Magizh…';setTimeout(done,1800)},{once:true});const p=v.play();if(p&&p.catch)p.catch(()=>{v.muted=true;v.play().catch(()=>{document.querySelector('.intro-message').textContent='Video could not play. Opening Magizh…';setTimeout(done,1800)})})}}catch(e){}})();
 async function loadHomeBanners(){try{const r=await fetch('/api/public-data');const d=await r.json();const banners=(d.settings?.homeBanners||[]).filter(b=>b.active!==false);const el=document.getElementById('homeBannerSlider');if(!el||!banners.length)return;let idx=0;const draw=()=>{const b=banners[idx];el.innerHTML=`<a href="${String(b.link||'/shop').replace(/"/g,'&quot;')}" aria-label="${String(b.title||'Home banner').replace(/"/g,'&quot;')}"><img src="${b.image}" alt="${b.title||'Magizh offer'}"></a><div class="banner-dots">${banners.map((_,i)=>`<i class="${i===idx?'active':''}"></i>`).join('')}</div>`;el.classList.add('ready')};draw();if(banners.length>1)setInterval(()=>{idx=(idx+1)%banners.length;draw()},4000)}catch(e){}}
 loadHomeBanners();
 </script><script src="/user.js" defer></script>
