@@ -24,7 +24,7 @@ button{cursor:pointer}
 .header{background:var(--paper);padding:15px 17px 13px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
 .brandrow{display:flex;align-items:center;gap:11px}
 .menu{width:35px;height:35px;border:0;background:transparent;color:var(--green);font-size:25px;padding:0}
-.logo-mark{width:43px;height:43px;border-radius:13px;background:#e8f1df;display:grid;place-items:center;color:#168d39;font-size:26px;flex-shrink:0}
+.logo-mark{width:43px;height:43px;border-radius:13px;background:#e8f1df;display:grid;place-items:center;overflow:hidden;flex-shrink:0}.logo-mark img{width:100%;height:100%;object-fit:contain;padding:3px}
 .brand{flex:1;min-width:0}
 .brand h1{font-family:Arial,Helvetica,sans-serif;font-size:25px;line-height:1;margin:0;letter-spacing:-.7px}
 .brand p{font-size:10px;color:var(--muted);margin:4px 0 0;letter-spacing:.2px}
@@ -33,7 +33,7 @@ button{cursor:pointer}
 .search{flex:1;display:flex;align-items:center;gap:8px;background:#f3f0e7;border:1px solid var(--line);border-radius:13px;padding:0 12px;height:42px;color:var(--muted)}
 .search input{border:0;outline:0;background:transparent;width:100%;min-width:0;font-size:12px;color:var(--green)}
 .cart{border:0;border-radius:13px;background:var(--orange);color:white;padding:0 13px;font-size:12px;font-weight:700}
-.hero{padding:17px 16px 0}
+.hero{padding:17px 16px 0}.hero-banner-slider{display:none;margin-bottom:14px;position:relative;border-radius:20px;overflow:hidden;background:#e8eddf}.hero-banner-slider.ready{display:block}.hero-banner-slider a{display:block}.hero-banner-slider img{display:block;width:100%;aspect-ratio:2.2/1;object-fit:cover}.banner-dots{display:flex;justify-content:center;gap:6px;padding:7px}.banner-dots i{width:6px;height:6px;border-radius:50%;background:#b5c2b1}.banner-dots i.active{background:var(--orange)}
 .hero-card{min-height:228px;border-radius:23px;overflow:hidden;position:relative;background:linear-gradient(115deg,#edf2df 0%,#f9ead3 58%,#f5d8ac 100%);padding:21px 18px;box-shadow:var(--shadow)}
 .eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--orange);margin:0 0 10px}
 .hero h2{font-family:Arial,Helvetica,sans-serif;font-weight:600;font-size:31px;line-height:1.08;letter-spacing:-.7px;max-width:245px;margin:0;color:#263f2d}
@@ -55,7 +55,7 @@ button{cursor:pointer}
 .cat-icon:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,#172d1d26)}
 .category span:last-child{font-size:10px;font-weight:700;display:block;color:#385440}
 .offer-banner{margin:19px 17px 0;background:linear-gradient(100deg,#f5b34a,#f9dba1);border-radius:18px;padding:15px 15px;display:flex;align-items:center;gap:12px;overflow:hidden;position:relative}
-.coin{width:57px;height:57px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#ffec8c,#c98b12);border:3px solid #f9dc65;box-shadow:inset 0 0 0 2px #fff5;color:#70440c;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:17px}
+.coin{width:57px;height:57px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#ffec8c,#c98b12);border:3px solid #f9dc65;box-shadow:inset 0 0 0 2px #fff5;overflow:hidden}
 .offer-copy{position:relative;z-index:1}
 .offer-copy strong{display:block;font-family:Arial,Helvetica,sans-serif;font-size:17px;line-height:1.15;color:#813a18}
 .offer-copy span{display:block;font-size:10px;color:#604a29;margin-top:5px}
@@ -90,15 +90,17 @@ button{cursor:pointer}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#173f2e;color:#fff;padding:12px 18px;border-radius:10px;font-size:14px;line-height:1.4;opacity:0;pointer-events:none;transition:.2s;z-index:300;white-space:normal;width:max-content;max-width:calc(100vw - 28px);text-align:center;box-shadow:0 8px 24px #0004}.toast.show{opacity:1}
 .toast.show{opacity:1}
 @media(min-width:760px){body{padding:0;background:var(--cream)}.phone{max-width:none;width:100%;border-radius:0;min-height:100vh;box-shadow:none;padding-bottom:76px}.header{border-radius:0;padding-left:4vw;padding-right:4vw}.hero{padding-left:4vw;padding-right:4vw}.section{padding-left:4vw;padding-right:4vw}.category-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.products{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.product-img{height:220px}.product h4{font-size:15px}.price{font-size:18px}.add{font-size:13px;padding:12px}.offer-banner{margin-left:4vw;margin-right:4vw}.bottomnav{left:0;transform:none;max-width:none;bottom:0;border-radius:0; padding:10px 12vw}.topline{padding:12px;font-size:13px}}@media(min-width:1200px){.products{grid-template-columns:repeat(5,minmax(0,1fr))}.hero-card{min-height:280px;padding:32px}.hero h2{font-size:42px;max-width:440px}.hero .sub{font-size:15px;max-width:420px}.hero-art{width:240px;height:230px}.section h3{font-size:28px}}
+.intro-overlay{position:fixed;inset:0;z-index:1000;background:#123c2b;display:grid;place-items:center;color:white}.intro-overlay video{width:100%;height:100%;object-fit:cover}.intro-overlay .skip{position:absolute;right:18px;bottom:24px;border:1px solid #ffffff90;background:#174b35cc;color:white;border-radius:20px;padding:10px 18px;font-weight:700}
 </style>
 </head>
 <body>
+<div id="introOverlay" class="intro-overlay" hidden><video id="introVideo" playsinline muted autoplay preload="auto"><source src="/magizh-intro.mp4" type="video/mp4"></video><button class="skip" onclick="finishIntro()">Skip</button></div>
 <div class="phone">
-  <div class="topline">MAGIZH × B5 &nbsp;·&nbsp; Shop local. Share goodness.</div>
+
   <header class="header">
     <div class="brandrow">
       <button class="menu" aria-label="Open menu" onclick="toast('Menu preview')">☰</button>
-      <div class="logo-mark">ம</div>
+      <div class="logo-mark"><img src="/assets/magizh-logo.png" alt="Magizh logo"></div>
       <div class="brand"><h1>Magizh</h1><p>Shopping &amp; Partner Network</p></div>
       <button class="profile" onclick="toast('Profile page preview')">Profile</button>
     </div>
@@ -109,6 +111,7 @@ button{cursor:pointer}
   </header>
 
   <section class="hero">
+    <div id="homeBannerSlider" class="hero-banner-slider" aria-label="Home offers"></div>
     <div class="hero-card">
       <p class="eyebrow">Magizh premium collection</p>
       <h2>Traditional goodness, beautifully crafted.</h2>
@@ -117,7 +120,7 @@ button{cursor:pointer}
       <div class="hero-art">
         <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=400&q=80" alt="Traditional wholesome food" />
       </div>
-      <span class="coin-tag">✦ B5 COIN REWARDS</span>
+      <span class="coin-tag"><img src="/assets/b5-logo.png" alt="B5" style="width:18px;height:18px;object-fit:contain;vertical-align:middle;margin-right:4px"> B5 COIN REWARDS</span>
     </div>
   </section>
 
@@ -136,7 +139,7 @@ button{cursor:pointer}
   </section>
 
   <section class="offer-banner" onclick="showPartnerOffers()" role="button" tabindex="0">
-    <div class="coin">B5</div>
+    <div class="coin"><img src="/assets/b5-logo.png" alt="B5 Coin" style="width:100%;height:100%;object-fit:contain;padding:5px"></div>
     <div class="offer-copy"><strong>Partner offers &amp; rewards</strong><span>Use B5 Coins at selected local shops.</span><b>EXPLORE OFFERS&nbsp; →</b></div>
   </section>
 
@@ -173,6 +176,11 @@ button{cursor:pointer}
   </nav>
 </div>
 <div class="toast" id="toast"></div>
-<script src="/user.js" defer></script>
+<script>
+function finishIntro(){const o=document.getElementById('introOverlay');if(o){document.getElementById('introVideo')?.pause();o.remove();try{sessionStorage.setItem('magizhIntroSeen','1')}catch(e){}}}
+(function(){try{if(!sessionStorage.getItem('magizhIntroSeen')){const o=document.getElementById('introOverlay'),v=document.getElementById('introVideo');o.hidden=false;const done=()=>finishIntro();v.addEventListener('ended',done,{once:true});v.addEventListener('error',done,{once:true});const p=v.play();if(p&&p.catch)p.catch(()=>{v.muted=true;v.play().catch(done)});setTimeout(done,12000)}}catch(e){}})();
+async function loadHomeBanners(){try{const r=await fetch('/api/public-data');const d=await r.json();const banners=(d.settings?.homeBanners||[]).filter(b=>b.active!==false);const el=document.getElementById('homeBannerSlider');if(!el||!banners.length)return;let idx=0;const draw=()=>{const b=banners[idx];el.innerHTML=`<a href="${String(b.link||'/shop').replace(/"/g,'&quot;')}" aria-label="${String(b.title||'Home banner').replace(/"/g,'&quot;')}"><img src="${b.image}" alt="${b.title||'Magizh offer'}"></a><div class="banner-dots">${banners.map((_,i)=>`<i class="${i===idx?'active':''}"></i>`).join('')}</div>`;el.classList.add('ready')};draw();if(banners.length>1)setInterval(()=>{idx=(idx+1)%banners.length;draw()},4000)}catch(e){}}
+loadHomeBanners();
+</script><script src="/user.js" defer></script>
 </body>
 </html>
